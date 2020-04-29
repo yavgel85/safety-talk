@@ -94,6 +94,146 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '22',
+                'title' => 'company_create',
+            ],
+            [
+                'id'    => '23',
+                'title' => 'company_edit',
+            ],
+            [
+                'id'    => '24',
+                'title' => 'company_show',
+            ],
+            [
+                'id'    => '25',
+                'title' => 'company_delete',
+            ],
+            [
+                'id'    => '26',
+                'title' => 'company_access',
+            ],
+            [
+                'id'    => '27',
+                'title' => 'instruction_create',
+            ],
+            [
+                'id'    => '28',
+                'title' => 'instruction_edit',
+            ],
+            [
+                'id'    => '29',
+                'title' => 'instruction_show',
+            ],
+            [
+                'id'    => '30',
+                'title' => 'instruction_delete',
+            ],
+            [
+                'id'    => '31',
+                'title' => 'instruction_access',
+            ],
+            [
+                'id'    => '32',
+                'title' => 'category_create',
+            ],
+            [
+                'id'    => '33',
+                'title' => 'category_edit',
+            ],
+            [
+                'id'    => '34',
+                'title' => 'category_show',
+            ],
+            [
+                'id'    => '35',
+                'title' => 'category_delete',
+            ],
+            [
+                'id'    => '36',
+                'title' => 'category_access',
+            ],
+            [
+                'id'    => '37',
+                'title' => 'worker_create',
+            ],
+            [
+                'id'    => '38',
+                'title' => 'worker_edit',
+            ],
+            [
+                'id'    => '39',
+                'title' => 'worker_show',
+            ],
+            [
+                'id'    => '40',
+                'title' => 'worker_delete',
+            ],
+            [
+                'id'    => '41',
+                'title' => 'worker_access',
+            ],
+            [
+                'id'    => '42',
+                'title' => 'workers_list_create',
+            ],
+            [
+                'id'    => '43',
+                'title' => 'workers_list_edit',
+            ],
+            [
+                'id'    => '44',
+                'title' => 'workers_list_show',
+            ],
+            [
+                'id'    => '45',
+                'title' => 'workers_list_delete',
+            ],
+            [
+                'id'    => '46',
+                'title' => 'workers_list_access',
+            ],
+            [
+                'id'    => '47',
+                'title' => 'status_create',
+            ],
+            [
+                'id'    => '48',
+                'title' => 'status_edit',
+            ],
+            [
+                'id'    => '49',
+                'title' => 'status_show',
+            ],
+            [
+                'id'    => '50',
+                'title' => 'status_delete',
+            ],
+            [
+                'id'    => '51',
+                'title' => 'status_access',
+            ],
+            [
+                'id'    => '52',
+                'title' => 'sent_instruction_create',
+            ],
+            [
+                'id'    => '53',
+                'title' => 'sent_instruction_edit',
+            ],
+            [
+                'id'    => '54',
+                'title' => 'sent_instruction_show',
+            ],
+            [
+                'id'    => '55',
+                'title' => 'sent_instruction_delete',
+            ],
+            [
+                'id'    => '56',
+                'title' => 'sent_instruction_access',
+            ],
+            [
+                'id'    => '57',
                 'title' => 'profile_password_edit',
             ],
         ];
