@@ -83,6 +83,90 @@
                         </ul>
                     </li>
                 @endcan
+                @can('company_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.companies.index") }}" class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.company.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('instruction_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.instructions.index") }}" class="nav-link {{ request()->is('admin/instructions') || request()->is('admin/instructions/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.instruction.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('category_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.category.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('worker_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.workers.index") }}" class="nav-link {{ request()->is('admin/workers') || request()->is('admin/workers/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.worker.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('workers_list_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.workers-lists.index") }}" class="nav-link {{ request()->is('admin/workers-lists') || request()->is('admin/workers-lists/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.workersList.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('status_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.statuses.index") }}" class="nav-link {{ request()->is('admin/statuses') || request()->is('admin/statuses/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.status.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('sent_instruction_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.sent-instructions.index") }}" class="nav-link {{ request()->is('admin/sent-instructions') || request()->is('admin/sent-instructions/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.sentInstruction.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
                     @can('profile_password_edit')
                         <li class="nav-item">

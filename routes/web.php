@@ -30,6 +30,38 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('teams/destroy', 'TeamController@massDestroy')->name('teams.massDestroy');
     Route::resource('teams', 'TeamController');
 
+    // Companies
+    Route::delete('companies/destroy', 'CompaniesController@massDestroy')->name('companies.massDestroy');
+    Route::post('companies/media', 'CompaniesController@storeMedia')->name('companies.storeMedia');
+    Route::post('companies/ckmedia', 'CompaniesController@storeCKEditorImages')->name('companies.storeCKEditorImages');
+    Route::resource('companies', 'CompaniesController');
+
+    // Instructions
+    Route::delete('instructions/destroy', 'InstructionsController@massDestroy')->name('instructions.massDestroy');
+    Route::post('instructions/media', 'InstructionsController@storeMedia')->name('instructions.storeMedia');
+    Route::post('instructions/ckmedia', 'InstructionsController@storeCKEditorImages')->name('instructions.storeCKEditorImages');
+    Route::resource('instructions', 'InstructionsController');
+
+    // Categories
+    Route::delete('categories/destroy', 'CategoriesController@massDestroy')->name('categories.massDestroy');
+    Route::resource('categories', 'CategoriesController');
+
+    // Workers
+    Route::delete('workers/destroy', 'WorkersController@massDestroy')->name('workers.massDestroy');
+    Route::resource('workers', 'WorkersController');
+
+    // Workers Lists
+    Route::delete('workers-lists/destroy', 'WorkersListsController@massDestroy')->name('workers-lists.massDestroy');
+    Route::resource('workers-lists', 'WorkersListsController');
+
+    // Statuses
+    Route::delete('statuses/destroy', 'StatusesController@massDestroy')->name('statuses.massDestroy');
+    Route::resource('statuses', 'StatusesController');
+
+    // Sent Instructions
+    Route::delete('sent-instructions/destroy', 'SentInstructionsController@massDestroy')->name('sent-instructions.massDestroy');
+    Route::resource('sent-instructions', 'SentInstructionsController');
+
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

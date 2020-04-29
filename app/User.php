@@ -40,6 +40,7 @@ class User extends Authenticatable
         'approved',
         'remember_token',
         'created_at',
+        'phone',
         'updated_at',
         'deleted_at',
         'team_id',
