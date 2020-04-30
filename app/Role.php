@@ -2,17 +2,10 @@
 
 namespace App;
 
-use Eloquent;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \DateTimeInterface;
 
-/**
- * Class Role
- * @package App
- * @mixin Eloquent
- */
 class Role extends Model
 {
     use SoftDeletes;
@@ -32,13 +25,15 @@ class Role extends Model
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date): string
+    protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+
     }
 
-    public function permissions(): BelongsToMany
+    public function permissions()
     {
         return $this->belongsToMany(Permission::class);
+
     }
 }

@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $users = [
             [
@@ -20,5 +20,6 @@ class UsersTableSeeder extends Seeder
         ];
 
         User::insert($users);
+
     }
 }

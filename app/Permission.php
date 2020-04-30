@@ -2,16 +2,10 @@
 
 namespace App;
 
-use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \DateTimeInterface;
 
-/**
- * Class Permission
- * @package App
- * @mixin Eloquent
- */
 class Permission extends Model
 {
     use SoftDeletes;
@@ -31,8 +25,9 @@ class Permission extends Model
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date): string
+    protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+
     }
 }

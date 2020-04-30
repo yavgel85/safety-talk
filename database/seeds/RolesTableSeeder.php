@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $roles = [
             [
@@ -19,5 +19,6 @@ class RolesTableSeeder extends Seeder
         ];
 
         Role::insert($roles);
+
     }
 }

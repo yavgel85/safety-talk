@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 
 <div class="card">
@@ -97,6 +96,8 @@
     </div>
 </div>
 
+
+
 @endsection
 
 @section('scripts')
@@ -130,7 +131,7 @@
 @if(isset($company) && $company->logo)
       var file = {!! json_encode($company->logo) !!}
           this.options.addedfile.call(this, file)
-      this.options.thumbnail.call(this, file, '{{ $company->logo->getUrl('thumb_front') }}')
+      this.options.thumbnail.call(this, file, '{{ $company->logo->getUrl('thumb') }}')
       file.previewElement.classList.add('dz-complete')
       $('form').append('<input type="hidden" name="logo" value="' + file.file_name + '">')
       this.options.maxFiles = this.options.maxFiles - 1
