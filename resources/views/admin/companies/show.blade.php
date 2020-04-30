@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
 
 <div class="card">
@@ -63,7 +62,7 @@
                         <td>
                             @if($company->logo)
                                 <a href="{{ $company->logo->getUrl() }}" target="_blank">
-                                    <img src="{{ env('APP_URL').$company->logo->getUrl('thumb') }}" width="50px" height="50px">
+                                    <img src="{{ $company->logo->getUrl('thumb') }}" width="50px" height="50px">
                                 </a>
                             @endif
                         </td>
@@ -110,5 +109,7 @@
         </div>
     </div>
 </div>
+
+
 
 @endsection

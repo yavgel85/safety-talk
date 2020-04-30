@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('content')
-
 @can('instruction_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
@@ -50,10 +48,10 @@
     </div>
 </div>
 
+
+
 @endsection
-
 @section('scripts')
-
 @parent
 <script>
     $(function () {
@@ -96,14 +94,14 @@
     aaSorting: [],
     ajax: "{{ route('admin.instructions.index') }}",
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'id', name: 'id' },
-        { data: 'name', name: 'name' },
-        { data: 'url', name: 'url' },
-        { data: 'user_name', name: 'user.name' },
-        { data: 'company_name', name: 'company.name' },
-        { data: 'category_name', name: 'category.name' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'name', name: 'name' },
+{ data: 'url', name: 'url' },
+{ data: 'user_name', name: 'user.name' },
+{ data: 'company_name', name: 'company.name' },
+{ data: 'category_name', name: 'category.name' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,
@@ -116,5 +114,4 @@
 });
 
 </script>
-
 @endsection

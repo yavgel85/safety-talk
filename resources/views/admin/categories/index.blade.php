@@ -1,7 +1,5 @@
 @extends('layouts.admin')
-
 @section('content')
-
 @can('category_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
@@ -38,11 +36,11 @@
     </div>
 </div>
 
-@endsection
 
+
+@endsection
 @section('scripts')
 @parent
-
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -84,10 +82,10 @@
     aaSorting: [],
     ajax: "{{ route('admin.categories.index') }}",
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'id', name: 'id' },
-        { data: 'name', name: 'name' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'name', name: 'name' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,
@@ -98,6 +96,6 @@
             .columns.adjust();
     });
 });
-</script>
 
+</script>
 @endsection

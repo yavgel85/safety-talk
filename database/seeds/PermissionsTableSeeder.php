@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class PermissionsTableSeeder extends Seeder
 {
-    public function run(): void
+    public function run()
     {
         $permissions = [
             [
@@ -239,5 +239,6 @@ class PermissionsTableSeeder extends Seeder
         ];
 
         Permission::insert($permissions);
+
     }
 }
