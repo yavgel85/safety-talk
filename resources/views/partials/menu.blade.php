@@ -86,7 +86,7 @@
                 @can('company_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.companies.index") }}" class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fa fa-building">
 
                             </i>
                             <p>
@@ -98,7 +98,7 @@
                 @can('instruction_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.instructions.index") }}" class="nav-link {{ request()->is('admin/instructions') || request()->is('admin/instructions/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fa fa-newspaper">
 
                             </i>
                             <p>
@@ -110,7 +110,7 @@
                 @can('category_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fa fa-list-alt">
 
                             </i>
                             <p>
@@ -122,7 +122,7 @@
                 @can('worker_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.workers.index") }}" class="nav-link {{ request()->is('admin/workers') || request()->is('admin/workers/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fas fa-users-cog">
 
                             </i>
                             <p>
@@ -134,7 +134,7 @@
                 @can('workers_list_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.workers-lists.index") }}" class="nav-link {{ request()->is('admin/workers-lists') || request()->is('admin/workers-lists/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fa fa-address-card">
 
                             </i>
                             <p>
@@ -146,7 +146,7 @@
                 @can('status_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.statuses.index") }}" class="nav-link {{ request()->is('admin/statuses') || request()->is('admin/statuses/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon fas fa-toggle-off">
 
                             </i>
                             <p>
@@ -158,7 +158,7 @@
                 @can('sent_instruction_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.sent-instructions.index") }}" class="nav-link {{ request()->is('admin/sent-instructions') || request()->is('admin/sent-instructions/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-cogs">
+                            <i class="fa-fw nav-icon far fa-share-square">
 
                             </i>
                             <p>
