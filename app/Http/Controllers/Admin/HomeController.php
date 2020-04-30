@@ -9,7 +9,7 @@ class HomeController
     public function index()
     {
         $settings1 = [
-            'chart_title'           => 'Latest Safety Talks',
+            'chart_title'           => 'Latest Safety Talks (line)',
             'chart_type'            => 'line',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\\Instruction',
@@ -26,12 +26,12 @@ class HomeController
         $chart1 = new LaravelChart($settings1);
 
         $settings2 = [
-            'chart_title'           => 'Latest Safety Talks',
+            'chart_title'           => 'Latest Safety Talks (bar)',
             'chart_type'            => 'bar',
             'report_type'           => 'group_by_date',
             'model'                 => 'App\\Instruction',
-            'group_by_field'        => 'updated_at',
-            'group_by_period'       => 'day',
+            'group_by_field'        => 'created_at',
+            'group_by_period'       => 'month',
             'aggregate_function'    => 'count',
             'filter_field'          => 'created_at',
             'filter_days'           => '90',
@@ -60,11 +60,12 @@ class HomeController
         $settings3['total_number'] = 0;
 
         if (class_exists($settings3['model'])) {
-            $settings3['total_number'] = $settings3['model']::when(isset($settings3['filter_field']), function ($query) use ($settings3) {
+            $settings3['total_number'] = $settings3['model']::when(isset($settings3['filter_field']), static function ($query) use ($settings3) {
                 if (isset($settings3['filter_days'])) {
                     return $query->where($settings3['filter_field'], '>=',
                         now()->subDays($settings3['filter_days'])->format('Y-m-d'));
-                } else
+                }
+
                 if (isset($settings3['filter_period'])) {
                     switch ($settings3['filter_period']) {
                         case 'week':$start  = date('Y-m-d', strtotime('last Monday'));break;
