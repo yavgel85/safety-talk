@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 
 class PermissionRoleTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $admin_permissions = Permission::all();
         Role::findOrFail(1)->permissions()->sync($admin_permissions->pluck('id'));
@@ -14,6 +14,5 @@ class PermissionRoleTableSeeder extends Seeder
             return substr($permission->title, 0, 5) != 'user_' && substr($permission->title, 0, 5) != 'role_' && substr($permission->title, 0, 11) != 'permission_';
         });
         Role::findOrFail(2)->permissions()->sync($user_permissions);
-
     }
 }

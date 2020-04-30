@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 @can('sent_instruction_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -54,11 +55,11 @@
     </div>
 </div>
 
-
-
 @endsection
+
 @section('scripts')
 @parent
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -100,16 +101,16 @@
     aaSorting: [],
     ajax: "{{ route('admin.sent-instructions.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'url', name: 'url' },
-{ data: 'validation_date', name: 'validation_date' },
-{ data: 'user_name', name: 'user.name' },
-{ data: 'status_name', name: 'status.name' },
-{ data: 'workers_list_name', name: 'workers_list.name' },
-{ data: 'instruction_name', name: 'instruction.name' },
-{ data: 'worker', name: 'workers.name' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'id', name: 'id' },
+        { data: 'url', name: 'url' },
+        { data: 'validation_date', name: 'validation_date' },
+        { data: 'user_name', name: 'user.name' },
+        { data: 'status_name', name: 'status.name' },
+        { data: 'workers_list_name', name: 'workers_list.name' },
+        { data: 'instruction_name', name: 'instruction.name' },
+        { data: 'worker', name: 'workers.name' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,

@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 
 <div class="card">
@@ -79,11 +80,10 @@
     </div>
 </div>
 
-
-
 @endsection
 
 @section('scripts')
+
 <script>
     $(document).ready(function () {
   function SimpleUploadAdapter(editor) {

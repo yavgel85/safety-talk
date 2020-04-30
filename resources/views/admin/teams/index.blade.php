@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 @can('team_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -76,11 +77,11 @@
     </div>
 </div>
 
-
-
 @endsection
+
 @section('scripts')
 @parent
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)

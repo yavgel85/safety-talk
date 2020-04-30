@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 @can('workers_list_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -42,11 +43,11 @@
     </div>
 </div>
 
-
-
 @endsection
+
 @section('scripts')
 @parent
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -88,12 +89,12 @@
     aaSorting: [],
     ajax: "{{ route('admin.workers-lists.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'is_listed', name: 'is_listed' },
-{ data: 'worker', name: 'workers.name' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'id', name: 'id' },
+        { data: 'name', name: 'name' },
+        { data: 'is_listed', name: 'is_listed' },
+        { data: 'worker', name: 'workers.name' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,

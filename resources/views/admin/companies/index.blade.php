@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 @can('company_create')
     <div style="margin-bottom: 10px;" class="row">
@@ -60,11 +61,11 @@
     </div>
 </div>
 
-
-
 @endsection
+
 @section('scripts')
 @parent
+
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
@@ -106,18 +107,18 @@
     aaSorting: [],
     ajax: "{{ route('admin.companies.index') }}",
     columns: [
-      { data: 'placeholder', name: 'placeholder' },
-{ data: 'id', name: 'id' },
-{ data: 'name', name: 'name' },
-{ data: 'address', name: 'address' },
-{ data: 'number', name: 'number' },
-{ data: 'vat_number', name: 'vat_number' },
-{ data: 'logo', name: 'logo', sortable: false, searchable: false },
-{ data: 'user_name', name: 'user.name' },
-{ data: 'contact_name', name: 'contact_name' },
-{ data: 'contact_mail', name: 'contact_mail' },
-{ data: 'contact_phone', name: 'contact_phone' },
-{ data: 'actions', name: '{{ trans('global.actions') }}' }
+        { data: 'placeholder', name: 'placeholder' },
+        { data: 'id', name: 'id' },
+        { data: 'name', name: 'name' },
+        { data: 'address', name: 'address' },
+        { data: 'number', name: 'number' },
+        { data: 'vat_number', name: 'vat_number' },
+        { data: 'logo', name: 'logo', sortable: false, searchable: false },
+        { data: 'user_name', name: 'user.name' },
+        { data: 'contact_name', name: 'contact_name' },
+        { data: 'contact_mail', name: 'contact_mail' },
+        { data: 'contact_phone', name: 'contact_phone' },
+        { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,
@@ -130,4 +131,5 @@
 });
 
 </script>
+
 @endsection

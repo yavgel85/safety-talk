@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+
 @section('content')
 
 <div class="card">
@@ -77,8 +78,6 @@
         </form>
     </div>
 </div>
-
-
 
 @endsection
 
