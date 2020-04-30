@@ -47,7 +47,8 @@ class HomeController
                 if (isset($settings2['filter_days'])) {
                     return $query->where($settings2['filter_field'], '>=',
                         now()->subDays($settings2['filter_days'])->format('Y-m-d'));
-                } else
+                }
+
                 if (isset($settings2['filter_period'])) {
                     switch ($settings2['filter_period']) {
                         case 'week':$start  = date('Y-m-d', strtotime('last Monday'));break;
@@ -60,7 +61,6 @@ class HomeController
                     }
 
                 }
-
             })
                 ->{$settings2['aggregate_function'] ?? 'count'}
             ($settings2['aggregate_field'] ?? '*');
