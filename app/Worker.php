@@ -3,10 +3,17 @@
 namespace App;
 
 use App\Traits\MultiTenantModelTrait;
+use Eloquent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use \DateTimeInterface;
 
+/**
+ * Class Worker
+ * @package App
+ * @mixin Eloquent
+ */
 class Worker extends Model
 {
     use SoftDeletes, MultiTenantModelTrait;
@@ -30,21 +37,18 @@ class Worker extends Model
         'team_id',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
+    protected function serializeDate(DateTimeInterface $date): string
     {
         return $date->format('Y-m-d H:i:s');
-
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-
     }
 
-    public function team()
+    public function team(): BelongsTo
     {
         return $this->belongsTo(Team::class, 'team_id');
-
     }
 }

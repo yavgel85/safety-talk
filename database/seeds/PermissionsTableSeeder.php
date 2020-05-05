@@ -236,9 +236,36 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '57',
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => '58',
+                'title' => 'sft_statistics',
+            ],
+            [
+                'id'    => '59',
+                'title' => 'sft_creation_theme',
+            ],
+            [
+                'id'    => '60',
+                'title' => 'sft_request',
+            ],
+            [
+                'id'    => '61',
+                'title' => 'sft_explanation',
+            ],
+            [
+                'id'    => '62',
+                'title' => 'sft_validation',
+            ],
+            [
+                'id'    => '63',
+                'title' => 'sft_db_management',
+            ],
+            [
+                'id'    => '64',
+                'title' => 'sft_create_new_account',
+            ],
         ];
 
         Permission::insert($permissions);
-
     }
 }

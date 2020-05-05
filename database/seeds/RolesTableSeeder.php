@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 
 class RolesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $roles = [
             [
@@ -14,7 +14,19 @@ class RolesTableSeeder extends Seeder
             ],
             [
                 'id'    => 2,
-                'title' => 'User',
+                'title' => 'Administrator',
+            ],
+            [
+                'id'    => 3,
+                'title' => 'Company manager',
+            ],
+            [
+                'id'    => 4,
+                'title' => 'Project manager',
+            ],
+            [
+                'id'    => 5,
+                'title' => 'Site manager',
             ],
         ];
 
