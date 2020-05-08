@@ -13,6 +13,7 @@ class CreateInstructionsTable extends Migration
             $table->string('name');
             $table->longText('description')->nullable();
             $table->string('url')->nullable();
+            $table->string('create_document');
             $table->timestamps();
             $table->softDeletes();
         });

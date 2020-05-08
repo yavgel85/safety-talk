@@ -14,15 +14,13 @@ class StoreInstructionRequest extends FormRequest
         abort_if(Gate::denies('instruction_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
-
     }
 
     public function rules()
     {
         return [
-            'name' => [
-                'required'],
+            'name' => ['required'],
+            'create_document' => ['required'],
         ];
-
     }
 }

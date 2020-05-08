@@ -40,6 +40,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('instructions/destroy', 'InstructionsController@massDestroy')->name('instructions.massDestroy');
     Route::post('instructions/media', 'InstructionsController@storeMedia')->name('instructions.storeMedia');
     Route::post('instructions/ckmedia', 'InstructionsController@storeCKEditorImages')->name('instructions.storeCKEditorImages');
+    //Route::post('instructions/show_mw/{id}', 'InstructionsController@showModalWindow')->name('instructions.show_mw');
+    Route::post('instructions/send/{id}', 'InstructionsController@send')->name('instructions.send');
+    //Route::get('pdf_form', 'InstructionsController@pdfForm');
+    //Route::get('pdf_download', 'InstructionsController@pdfDownload');
     Route::resource('instructions', 'InstructionsController');
 
     // Categories

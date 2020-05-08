@@ -264,6 +264,14 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => '64',
                 'title' => 'sft_create_new_account',
             ],
+            [
+                'id'    => '65',
+                'title' => 'instruction_show_mw', // modal window
+            ],
+            [
+                'id'    => '66',
+                'title' => 'instruction_send',
+            ],
         ];
 
         Permission::insert($permissions);
