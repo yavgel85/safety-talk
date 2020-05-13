@@ -45,6 +45,15 @@ class InstructionsController extends Controller
                 $deleteGate    = 'instruction_delete';
                 $crudRoutePart = 'instructions';
 
+                $urls  = [];
+                foreach ($row->import_pdf as $media) {
+                    $urls[] = $media->getUrl();
+                }
+
+                implode(', ', $urls);
+                //return $urls;
+
+
                 return view('partials.datatablesActions', compact(
                     'viewGate',
                     'showGate',
@@ -53,23 +62,24 @@ class InstructionsController extends Controller
                     'deleteGate',
                     'crudRoutePart',
                     'row',
-                    'siteManagers'
+                    'siteManagers',
+                    'urls'
                 ));
             });
 
-            $table->editColumn('id', function ($row) {
+            $table->editColumn('id', static function ($row) {
                 return $row->id ? $row->id : "";
             });
-            $table->editColumn('name', function ($row) {
+            $table->editColumn('name', static function ($row) {
                 return $row->name ? $row->name : "";
             });
-            $table->addColumn('company_name', function ($row) {
+            $table->addColumn('company_name', static function ($row) {
                 return $row->company ? $row->company->name : '';
             });
-            $table->editColumn('create_document', function ($row) {
+            $table->editColumn('create_document', static function ($row) {
                 return $row->create_document ? Instruction::CREATE_DOCUMENT_SELECT[$row->create_document] : '';
             });
-            $table->editColumn('import_pdf', function ($row) {
+            $table->editColumn('import_pdf', static function ($row) {
                 if (!$row->import_pdf) {
                     return '';
                 }
@@ -82,14 +92,14 @@ class InstructionsController extends Controller
 
                 return implode(', ', $links);
             });
-            $table->editColumn('url', function ($row) {
+            $table->editColumn('url', static function ($row) {
                 return $row->url ? $row->url : "";
             });
-            $table->addColumn('user_name', function ($row) {
+            $table->addColumn('user_name', static function ($row) {
                 return $row->user ? $row->user->name : '';
             });
 
-            $table->addColumn('category_name', function ($row) {
+            $table->addColumn('category_name', static function ($row) {
                 return $row->category ? $row->category->name : '';
             });
 
@@ -221,15 +231,15 @@ class InstructionsController extends Controller
     public function send(StoreSentInstructionRequest $request)
     {
         dd($request->all());
-        abort_if(Gate::denies('instruction_send'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        //abort_if(Gate::denies('instruction_send'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $instructionSent = SentInstruction::create($request->all());
+        //$instructionSent = SentInstruction::create($request->all());
 
 //        if ($media = $request->input('ck-media', false)) {
 //            Media::whereIn('id', $media)->update(['model_id' => $instructionSent->id]);
 //        }
 
-        return redirect()->route('admin.instructions.index');
+        //return redirect()->route('admin.instructions.index');
     }
 
     /*public function pdfForm()
