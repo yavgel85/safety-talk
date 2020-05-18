@@ -3,20 +3,13 @@
 namespace App;
 
 use App\Traits\MultiTenantModelTrait;
-use Eloquent;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use \DateTimeInterface;
 
-/**
- * Class Company
- * @package App
- * @mixin Eloquent
- */
 class Company extends Model implements HasMedia
 {
     use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
@@ -48,12 +41,12 @@ class Company extends Model implements HasMedia
         'team_id',
     ];
 
-    protected function serializeDate(DateTimeInterface $date): string
+    protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
@@ -70,12 +63,12 @@ class Company extends Model implements HasMedia
         return $file;
     }
 
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function team(): BelongsTo
+    public function team()
     {
         return $this->belongsTo(Team::class, 'team_id');
     }

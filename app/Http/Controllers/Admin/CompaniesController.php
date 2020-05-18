@@ -70,7 +70,6 @@ class CompaniesController extends Controller
                 }
 
                 return '';
-
             });
             $table->addColumn('user_name', function ($row) {
                 return $row->user ? $row->user->name : '';
@@ -116,7 +115,6 @@ class CompaniesController extends Controller
         }
 
         return redirect()->route('admin.companies.index');
-
     }
 
     public function edit(Company $company)
@@ -138,13 +136,11 @@ class CompaniesController extends Controller
             if (!$company->logo || $request->input('logo') !== $company->logo->file_name) {
                 $company->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
             }
-
         } elseif ($company->logo) {
             $company->logo->delete();
         }
 
         return redirect()->route('admin.companies.index');
-
     }
 
     public function show(Company $company)
@@ -163,7 +159,6 @@ class CompaniesController extends Controller
         $company->delete();
 
         return back();
-
     }
 
     public function massDestroy(MassDestroyCompanyRequest $request)
@@ -171,7 +166,6 @@ class CompaniesController extends Controller
         Company::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
 
     public function storeCKEditorImages(Request $request)
@@ -184,7 +178,5 @@ class CompaniesController extends Controller
         $media         = $model->addMediaFromRequest('upload')->toMediaCollection('ck-media');
 
         return response()->json(['id' => $media->id, 'url' => $media->getUrl()], Response::HTTP_CREATED);
-
     }
-
 }

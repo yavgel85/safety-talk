@@ -14,15 +14,15 @@ class UpdateInstructionRequest extends FormRequest
         abort_if(Gate::denies('instruction_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return true;
-
     }
 
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'create_document' => ['required'],
+            'name'            => [
+                'required'],
+            'create_document' => [
+                'required'],
         ];
-
     }
 }

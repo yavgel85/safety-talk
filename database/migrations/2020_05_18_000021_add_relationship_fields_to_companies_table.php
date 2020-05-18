@@ -14,6 +14,5 @@ class AddRelationshipFieldsToCompaniesTable extends Migration
             $table->unsignedInteger('team_id')->nullable();
             $table->foreign('team_id', 'team_fk_1393377')->references('id')->on('teams');
         });
-
     }
 }

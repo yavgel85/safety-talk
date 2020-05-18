@@ -14,6 +14,5 @@ class CreateWorkerWorkersListPivotTable extends Migration
             $table->unsignedInteger('worker_id');
             $table->foreign('worker_id', 'worker_id_fk_1393689')->references('id')->on('workers')->onDelete('cascade');
         });
-
     }
 }

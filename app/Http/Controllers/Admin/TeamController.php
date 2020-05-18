@@ -34,7 +34,6 @@ class TeamController extends Controller
         $team = Team::create($request->all());
 
         return redirect()->route('admin.teams.index');
-
     }
 
     public function edit(Team $team)
@@ -49,7 +48,6 @@ class TeamController extends Controller
         $team->update($request->all());
 
         return redirect()->route('admin.teams.index');
-
     }
 
     public function show(Team $team)
@@ -66,7 +64,6 @@ class TeamController extends Controller
         $team->delete();
 
         return back();
-
     }
 
     public function massDestroy(MassDestroyTeamRequest $request)
@@ -74,6 +71,5 @@ class TeamController extends Controller
         Team::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
 }

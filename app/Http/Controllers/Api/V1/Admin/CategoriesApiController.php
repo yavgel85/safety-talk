@@ -18,7 +18,6 @@ class CategoriesApiController extends Controller
         abort_if(Gate::denies('category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new CategoryResource(Category::all());
-
     }
 
     public function store(StoreCategoryRequest $request)
@@ -28,7 +27,6 @@ class CategoriesApiController extends Controller
         return (new CategoryResource($category))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-
     }
 
     public function show(Category $category)
@@ -36,7 +34,6 @@ class CategoriesApiController extends Controller
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new CategoryResource($category);
-
     }
 
     public function update(UpdateCategoryRequest $request, Category $category)
@@ -46,7 +43,6 @@ class CategoriesApiController extends Controller
         return (new CategoryResource($category))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
-
     }
 
     public function destroy(Category $category)
@@ -56,6 +52,5 @@ class CategoriesApiController extends Controller
         $category->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
 }

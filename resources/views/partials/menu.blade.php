@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
-    <a href="{{ route("admin.home") }}" class="brand-link">
+    <a href="#" class="brand-link">
         <span class="brand-text font-weight-light">{{ trans('panel.site_title') }}</span>
     </a>
 
@@ -86,7 +86,7 @@
                 @can('company_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.companies.index") }}" class="nav-link {{ request()->is('admin/companies') || request()->is('admin/companies/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fa fa-building">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -98,7 +98,7 @@
                 @can('instruction_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.instructions.index") }}" class="nav-link {{ request()->is('admin/instructions') || request()->is('admin/instructions/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fa fa-newspaper">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -110,7 +110,7 @@
                 @can('category_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.categories.index") }}" class="nav-link {{ request()->is('admin/categories') || request()->is('admin/categories/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fa fa-list-alt">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -122,7 +122,7 @@
                 @can('worker_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.workers.index") }}" class="nav-link {{ request()->is('admin/workers') || request()->is('admin/workers/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-users-cog">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -134,7 +134,7 @@
                 @can('workers_list_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.workers-lists.index") }}" class="nav-link {{ request()->is('admin/workers-lists') || request()->is('admin/workers-lists/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fa fa-address-card">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -146,7 +146,7 @@
                 @can('status_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.statuses.index") }}" class="nav-link {{ request()->is('admin/statuses') || request()->is('admin/statuses/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon fas fa-toggle-off">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
@@ -158,11 +158,23 @@
                 @can('sent_instruction_access')
                     <li class="nav-item">
                         <a href="{{ route("admin.sent-instructions.index") }}" class="nav-link {{ request()->is('admin/sent-instructions') || request()->is('admin/sent-instructions/*') ? 'active' : '' }}">
-                            <i class="fa-fw nav-icon far fa-share-square">
+                            <i class="fa-fw nav-icon fas fa-cogs">
 
                             </i>
                             <p>
                                 {{ trans('cruds.sentInstruction.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('company_account_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.company-accounts.index") }}" class="nav-link {{ request()->is('admin/company-accounts') || request()->is('admin/company-accounts/*') ? 'active' : '' }}">
+                            <i class="fa-fw nav-icon fas fa-cogs">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.companyAccount.title') }}
                             </p>
                         </a>
                     </li>

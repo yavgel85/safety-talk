@@ -1,19 +1,13 @@
 @extends('layouts.admin')
-
-@section('styles')
-    <style>
-        #div1,#div2 { display: none; }
-    </style>
-@endsection
-
 @section('content')
+
 <div class="card">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.instruction.title_singular') }}
     </div>
 
     <div class="card-body">
-        <form id="instruction_create_form" method="POST" action="{{ route("admin.instructions.store") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.instructions.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="name">{{ trans('cruds.instruction.fields.name') }}</label>
@@ -37,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label class="required">{{ trans('cruds.instruction.fields.create_document') }}</label>
-                <select class="form-control {{ $errors->has('create_document') ? 'is-invalid' : '' }}" name="create_document" id="create_document" onchange="showHide(this)" required>
+                <select class="form-control {{ $errors->has('create_document') ? 'is-invalid' : '' }}" name="create_document" id="create_document" required>
                     <option value disabled {{ old('create_document', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Instruction::CREATE_DOCUMENT_SELECT as $key => $label)
                         <option value="{{ $key }}" {{ old('create_document', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
@@ -48,7 +42,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.instruction.fields.create_document_helper') }}</span>
             </div>
-            <div class="form-group" id="div1">
+            <div class="form-group">
                 <label for="import_pdf">{{ trans('cruds.instruction.fields.import_pdf') }}</label>
                 <div class="needsclick dropzone {{ $errors->has('import_pdf') ? 'is-invalid' : '' }}" id="import_pdf-dropzone">
                 </div>
@@ -57,7 +51,7 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.instruction.fields.import_pdf_helper') }}</span>
             </div>
-            <div class="form-group" id="div2">
+            <div class="form-group">
                 <label for="description">{{ trans('cruds.instruction.fields.description') }}</label>
                 <textarea class="form-control ckeditor {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" id="description">{!! old('description') !!}</textarea>
                 @if($errors->has('description'))
@@ -65,10 +59,6 @@
                 @endif
                 <span class="help-block">{{ trans('cruds.instruction.fields.description_helper') }}</span>
             </div>
-            {{--Start preview PDF/Image file before upload--}}
-            <input type="file" id="myPdf" /><br>
-            <canvas id="pdfViewer"></canvas>
-            {{--End preview PDF/Image file before upload--}}
             <div class="form-group">
                 <label for="url">{{ trans('cruds.instruction.fields.url') }}</label>
                 <input class="form-control {{ $errors->has('url') ? 'is-invalid' : '' }}" type="text" name="url" id="url" value="{{ old('url', '') }}">
@@ -110,82 +100,66 @@
     </div>
 </div>
 
+
+
 @endsection
 
 @section('scripts')
-{{--Preview PDF/Image file before upload--}}
-<script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
-<script>
-    function showHide(elem) {
-        const option = $(elem). children("option:selected").val()
-
-        //hide the divs
-        option == 1 ? $(`#div2`).hide() : $(`#div1`).hide()
-
-        //show the selected div
-        $(`#div${option}`).show()
-    }
-
-    window.onload=function() {
-        //get the divs to show/hide
-        divs0 = document.getElementById("instruction_create_form").getElementsByTagName('div');
-    }
-</script>
 <script>
     var uploadedImportPdfMap = {}
-    Dropzone.options.importPdfDropzone = {
-        url: '{{ route('admin.instructions.storeMedia') }}',
-        maxFilesize: 2, // MB
-        addRemoveLinks: true,
-        headers: {
-            'X-CSRF-TOKEN': "{{ csrf_token() }}"
-        },
-        params: {
-            size: 2
-        },
-        success: function (file, response) {
-            $('form').append('<input type="hidden" name="import_pdf[]" value="' + response.name + '">')
-            uploadedImportPdfMap[file.name] = response.name
-        },
-        removedfile: function (file) {
-            file.previewElement.remove()
-            var name = ''
-            if (typeof file.file_name !== 'undefined') {
-                name = file.file_name
-            } else {
-                name = uploadedImportPdfMap[file.name]
-            }
-            $('form').find('input[name="import_pdf[]"][value="' + name + '"]').remove()
-        },
-        init: function () {
-                @if(isset($instruction) && $instruction->import_pdf)
-            var files =
+Dropzone.options.importPdfDropzone = {
+    url: '{{ route('admin.instructions.storeMedia') }}',
+    maxFilesize: 2, // MB
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 2
+    },
+    success: function (file, response) {
+      $('form').append('<input type="hidden" name="import_pdf[]" value="' + response.name + '">')
+      uploadedImportPdfMap[file.name] = response.name
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedImportPdfMap[file.name]
+      }
+      $('form').find('input[name="import_pdf[]"][value="' + name + '"]').remove()
+    },
+    init: function () {
+@if(isset($instruction) && $instruction->import_pdf)
+          var files =
             {!! json_encode($instruction->import_pdf) !!}
-                for (var i in files) {
-                var file = files[i]
-                this.options.addedfile.call(this, file)
-                file.previewElement.classList.add('dz-complete')
-                $('form').append('<input type="hidden" name="import_pdf[]" value="' + file.file_name + '">')
+              for (var i in files) {
+              var file = files[i]
+              this.options.addedfile.call(this, file)
+              file.previewElement.classList.add('dz-complete')
+              $('form').append('<input type="hidden" name="import_pdf[]" value="' + file.file_name + '">')
             }
-            @endif
-        },
-        error: function (file, response) {
-            if ($.type(response) === 'string') {
-                var message = response //dropzone sends it's own error messages in string
-            } else {
-                var message = response.errors.file
-            }
-            file.previewElement.classList.add('dz-error')
-            _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
-            _results = []
-            for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                node = _ref[_i]
-                _results.push(node.textContent = message)
-            }
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
 
-            return _results
-        }
-    }
+         return _results
+     }
+}
 </script>
 <script>
     $(document).ready(function () {
@@ -249,57 +223,6 @@
     );
   }
 });
-</script>
-{{--Preview PDF/Image file before upload--}}
-<script>
-    // Loaded via <script> tag, create shortcut to access PDF.js exports.
-    let pdfjsLib = window['pdfjs-dist/build/pdf'];
-    // The workerSrc property shall be specified.
-    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
-
-    $("#myPdf").on("change", function(e){
-        let file = e.target.files[0]
-        if(file.type == "application/pdf"){
-            let fileReader = new FileReader();
-            fileReader.onload = function() {
-                let pdfData = new Uint8Array(this.result);
-                // Using DocumentInitParameters object to load binary data.
-                let loadingTask = pdfjsLib.getDocument({data: pdfData});
-                loadingTask.promise.then(function(pdf) {
-                    console.log('PDF loaded');
-
-                    // Fetch the first page
-                    let pageNumber = 1;
-                    pdf.getPage(pageNumber).then(function(page) {
-                        console.log('Page loaded');
-
-                        let scale = 1.5;
-                        let viewport = page.getViewport({scale: scale});
-
-                        // Prepare canvas using PDF page dimensions
-                        let canvas = $("#pdfViewer")[0];
-                        let context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-
-                        // Render PDF page into canvas context
-                        let renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        let renderTask = page.render(renderContext);
-                        renderTask.promise.then(function () {
-                            console.log('Page rendered');
-                        });
-                    });
-                }, function (reason) {
-                    // PDF loading error
-                    console.error(reason);
-                });
-            };
-            fileReader.readAsArrayBuffer(file);
-        }
-    });
 </script>
 
 @endsection

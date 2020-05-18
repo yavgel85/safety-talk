@@ -35,5 +35,4 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Sent Instructions
     Route::apiResource('sent-instructions', 'SentInstructionsApiController');
-
 });

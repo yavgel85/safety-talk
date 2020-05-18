@@ -13,6 +13,5 @@ class AddApprovalFields extends Migration
                 'approved' => true,
             ]);
         });
-
     }
 }

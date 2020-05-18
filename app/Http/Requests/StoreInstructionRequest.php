@@ -19,8 +19,10 @@ class StoreInstructionRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required'],
-            'create_document' => ['required'],
+            'name'            => [
+                'required'],
+            'create_document' => [
+                'required'],
         ];
     }
 }

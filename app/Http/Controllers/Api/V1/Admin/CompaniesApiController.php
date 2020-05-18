@@ -21,7 +21,6 @@ class CompaniesApiController extends Controller
         abort_if(Gate::denies('company_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new CompanyResource(Company::with(['user', 'team'])->get());
-
     }
 
     public function store(StoreCompanyRequest $request)
@@ -35,7 +34,6 @@ class CompaniesApiController extends Controller
         return (new CompanyResource($company))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-
     }
 
     public function show(Company $company)
@@ -43,7 +41,6 @@ class CompaniesApiController extends Controller
         abort_if(Gate::denies('company_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new CompanyResource($company->load(['user', 'team']));
-
     }
 
     public function update(UpdateCompanyRequest $request, Company $company)
@@ -54,7 +51,6 @@ class CompaniesApiController extends Controller
             if (!$company->logo || $request->input('logo') !== $company->logo->file_name) {
                 $company->addMedia(storage_path('tmp/uploads/' . $request->input('logo')))->toMediaCollection('logo');
             }
-
         } elseif ($company->logo) {
             $company->logo->delete();
         }
@@ -62,7 +58,6 @@ class CompaniesApiController extends Controller
         return (new CompanyResource($company))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
-
     }
 
     public function destroy(Company $company)
@@ -72,7 +67,5 @@ class CompaniesApiController extends Controller
         $company->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
-
 }
