@@ -18,6 +18,5 @@ class AddRelationshipFieldsToInstructionsTable extends Migration
             $table->unsignedInteger('category_id')->nullable();
             $table->foreign('category_id', 'category_fk_1393274')->references('id')->on('categories');
         });
-
     }
 }

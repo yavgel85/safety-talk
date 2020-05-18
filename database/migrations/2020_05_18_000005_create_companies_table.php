@@ -20,6 +20,5 @@ class CreateCompaniesTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
-
     }
 }

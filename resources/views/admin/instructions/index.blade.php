@@ -46,9 +46,6 @@
                         {{ trans('cruds.instruction.fields.company') }}
                     </th>
                     <th>
-                        {{ trans('cruds.instruction.fields.created_at') }}
-                    </th>
-                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -103,17 +100,16 @@
     aaSorting: [],
     ajax: "{{ route('admin.instructions.index') }}",
     columns: [
-        { data: 'placeholder', name: 'placeholder' },
-        { data: 'id', name: 'id' },
-        { data: 'name', name: 'name' },
-        { data: 'category_name', name: 'category.name' },
-        { data: 'create_document', name: 'create_document' },
-        { data: 'import_pdf', name: 'import_pdf', sortable: false, searchable: false },
-        { data: 'url', name: 'url' },
-        { data: 'user_name', name: 'user.name' },
-        { data: 'company_name', name: 'company.name' },
-        { data: 'created_at', name: 'created_at' },
-        { data: 'actions', name: '{{ trans('global.actions') }}' }
+      { data: 'placeholder', name: 'placeholder' },
+{ data: 'id', name: 'id' },
+{ data: 'name', name: 'name' },
+{ data: 'category_name', name: 'category.name' },
+{ data: 'create_document', name: 'create_document' },
+{ data: 'import_pdf', name: 'import_pdf', sortable: false, searchable: false },
+{ data: 'url', name: 'url' },
+{ data: 'user_name', name: 'user.name' },
+{ data: 'company_name', name: 'company.name' },
+{ data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     order: [[ 1, 'desc' ]],
     pageLength: 100,

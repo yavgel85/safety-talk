@@ -3,20 +3,13 @@
 namespace App;
 
 use App\Traits\MultiTenantModelTrait;
-use Eloquent;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
 use \DateTimeInterface;
 
-/**
- * Class Instruction
- * @package App
- * @mixin Eloquent
- */
 class Instruction extends Model implements HasMedia
 {
     use SoftDeletes, MultiTenantModelTrait, HasMediaTrait;
@@ -33,57 +26,57 @@ class Instruction extends Model implements HasMedia
         'deleted_at',
     ];
 
-    public const CREATE_DOCUMENT_SELECT = [
+    const CREATE_DOCUMENT_SELECT = [
         '1' => 'Import PDF',
         '2' => 'Create from App',
     ];
 
     protected $fillable = [
         'name',
+        'category_id',
         'create_document',
         'description',
         'url',
         'user_id',
         'company_id',
         'created_at',
-        'category_id',
         'updated_at',
         'deleted_at',
         'team_id',
     ];
 
-    protected function serializeDate(DateTimeInterface $date): string
+    protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->width(50)->height(50);
     }
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function company(): BelongsTo
-    {
-        return $this->belongsTo(Company::class, 'company_id');
-    }
-
-    public function category(): BelongsTo
+    public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
-    }
-
-    public function team(): BelongsTo
-    {
-        return $this->belongsTo(Team::class, 'team_id');
     }
 
     public function getImportPdfAttribute()
     {
         return $this->getMedia('import_pdf');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class, 'company_id');
+    }
+
+    public function team()
+    {
+        return $this->belongsTo(Team::class, 'team_id');
     }
 }

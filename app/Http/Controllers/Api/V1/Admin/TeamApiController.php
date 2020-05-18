@@ -18,7 +18,6 @@ class TeamApiController extends Controller
         abort_if(Gate::denies('team_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new TeamResource(Team::all());
-
     }
 
     public function store(StoreTeamRequest $request)
@@ -28,7 +27,6 @@ class TeamApiController extends Controller
         return (new TeamResource($team))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-
     }
 
     public function show(Team $team)
@@ -36,7 +34,6 @@ class TeamApiController extends Controller
         abort_if(Gate::denies('team_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         return new TeamResource($team);
-
     }
 
     public function update(UpdateTeamRequest $request, Team $team)
@@ -46,7 +43,6 @@ class TeamApiController extends Controller
         return (new TeamResource($team))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
-
     }
 
     public function destroy(Team $team)
@@ -56,6 +52,5 @@ class TeamApiController extends Controller
         $team->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
-
     }
 }

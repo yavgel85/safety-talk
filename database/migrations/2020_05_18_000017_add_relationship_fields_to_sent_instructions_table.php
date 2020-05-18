@@ -20,6 +20,5 @@ class AddRelationshipFieldsToSentInstructionsTable extends Migration
             $table->unsignedInteger('team_id')->nullable();
             $table->foreign('team_id', 'team_fk_1393858')->references('id')->on('teams');
         });
-
     }
 }

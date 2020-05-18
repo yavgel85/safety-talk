@@ -40,10 +40,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('instructions/destroy', 'InstructionsController@massDestroy')->name('instructions.massDestroy');
     Route::post('instructions/media', 'InstructionsController@storeMedia')->name('instructions.storeMedia');
     Route::post('instructions/ckmedia', 'InstructionsController@storeCKEditorImages')->name('instructions.storeCKEditorImages');
-    //Route::post('instructions/show_mw/{id}', 'InstructionsController@showModalWindow')->name('instructions.show_mw');
-    Route::post('instructions/send/{id}', 'InstructionsController@send')->name('instructions.send');
-    //Route::get('pdf_form', 'InstructionsController@pdfForm');
-    //Route::get('pdf_download', 'InstructionsController@pdfDownload');
     Route::resource('instructions', 'InstructionsController');
 
     // Categories
@@ -66,6 +62,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('sent-instructions/destroy', 'SentInstructionsController@massDestroy')->name('sent-instructions.massDestroy');
     Route::resource('sent-instructions', 'SentInstructionsController');
 
+    // Company Accounts
+    Route::resource('company-accounts', 'CompanyAccountController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -73,5 +71,4 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::get('password', 'ChangePasswordController@edit')->name('password.edit');
         Route::post('password', 'ChangePasswordController@update')->name('password.update');
     }
-
 });

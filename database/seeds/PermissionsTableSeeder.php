@@ -234,43 +234,11 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => '57',
-                'title' => 'profile_password_edit',
+                'title' => 'company_account_access',
             ],
             [
                 'id'    => '58',
-                'title' => 'sft_statistics',
-            ],
-            [
-                'id'    => '59',
-                'title' => 'sft_creation_theme',
-            ],
-            [
-                'id'    => '60',
-                'title' => 'sft_request',
-            ],
-            [
-                'id'    => '61',
-                'title' => 'sft_explanation',
-            ],
-            [
-                'id'    => '62',
-                'title' => 'sft_validation',
-            ],
-            [
-                'id'    => '63',
-                'title' => 'sft_db_management',
-            ],
-            [
-                'id'    => '64',
-                'title' => 'sft_create_new_account',
-            ],
-            [
-                'id'    => '65',
-                'title' => 'instruction_show_mw', // modal window
-            ],
-            [
-                'id'    => '66',
-                'title' => 'instruction_send',
+                'title' => 'profile_password_edit',
             ],
         ];
 
